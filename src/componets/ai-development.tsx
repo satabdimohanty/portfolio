@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const TOOLS = [
   {
@@ -115,9 +115,14 @@ const PATCH_SUCCESS_TEXT = `[COMPILER PATCH] Auto-resolved onClick target bindin
 export default function AIDevelopmentSection() {
   const [activeTab, setActiveTab] = useState("copilot");
   const [loading, setLoading] = useState(false);
+  const isMounted = useRef(false);
 
   // Trigger brief simulator loading animation when swapping tabs
   useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
     setLoading(true);
     const timer = setTimeout(() => setLoading(false), 250);
     return () => clearTimeout(timer);
@@ -135,7 +140,7 @@ export default function AIDevelopmentSection() {
           viewBox="0 0 50 50"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="text-brand-accent-light animate-[spin_10s_linear_infinite]"
+          className="text-emerald-500 animate-[spin_10s_linear_infinite]"
         >
           <path d="M25 0L28 17L45 20L28 23L25 40L22 23L5 20L22 17L25 0Z" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
         </svg>
@@ -167,11 +172,11 @@ export default function AIDevelopmentSection() {
                     onClick={() => setActiveTab(tool.id)}
                     className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg border text-left transition-all shrink-0 ${
                       isActive
-                        ? "bg-gradient-to-r from-brand-accent-light to-brand-accent-dark border-brand-accent-light/30 text-white shadow-lg shadow-brand-accent-light/10"
+                        ? "bg-gradient-to-r from-emerald-500 to-emerald-600 border-emerald-500/30 text-white shadow-lg shadow-emerald-500/10"
                         : "bg-transparent border-transparent text-zinc-400 hover:text-white hover:bg-zinc-900/30"
                     }`}
                   >
-                    <span className={`${isActive ? "text-white" : "text-brand-accent-light"}`}>
+                    <span className={`${isActive ? "text-white" : "text-emerald-500"}`}>
                       {tool.logo}
                     </span>
                     <div className="hidden md:block">

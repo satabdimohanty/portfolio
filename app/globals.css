@@ -5,6 +5,10 @@
 :root {
   --background: #050505;
   --foreground: #d4d4d8;
+  --color-brand-accent-light: #10b981;
+  --color-brand-accent-dark: #059669;
+  --color-badge-bg: #111216;
+  --color-card-bg: #18181b;
 }
 
 @theme {
@@ -61,6 +65,7 @@ html.lenis body {
 }
 
 body {
+  overflow-x: hidden;
   background-color: #050505;
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
@@ -175,10 +180,7 @@ body {
   position: relative;
   padding: 1.5px;
   overflow: hidden;
-  background-color: #050505; /* Solid dark backing to prevent Chromium compositing white fallback */
-  /* Fix Chrome GPU hardware acceleration rendering and clipping bug */
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  background-color: #050505; /* Solid dark backing */
   isolation: isolate;
 }
 
@@ -203,14 +205,11 @@ body {
 
 .animating-gradient-border-inner {
   position: relative;
-  background-color: #0e1118; /* Solid dark backing to prevent Chromium compositing white fallback */
+  background-color: #0e1118;
   background-image: linear-gradient(135deg, #0e1118 0%, #071710 50%, #090c12 100%);
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.95);
   width: 100%;
   overflow: hidden;
-  /* Fix Chrome GPU hardware acceleration rendering and clipping bug */
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 .animating-gradient-border-inner::after {

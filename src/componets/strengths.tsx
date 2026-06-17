@@ -19,7 +19,7 @@ export default function StrengthsSection() {
           viewBox="0 0 60 50"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="text-brand-accent-light animate-pulse"
+          className="text-emerald-500 animate-pulse"
         >
           <rect x="4" y="30" width="8" height="16" rx="1" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="2" />
           <rect x="18" y="18" width="8" height="28" rx="1" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="2" />

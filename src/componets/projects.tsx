@@ -101,9 +101,12 @@ function TypedBoot({ lines, accent }: { lines: string[]; accent: string }) {
         setTimeout(tick, 200);
       }
     }
-    tick();
+    
+    const startTimeout = setTimeout(tick, 50);
+    
     return () => {
       cancelled = true;
+      clearTimeout(startTimeout);
     };
   }, [lines]);
 
@@ -139,6 +142,7 @@ function SignalTrace({ accent, seed }: { accent: string; seed: number }) {
 
     let raf = 0;
     let t = seed * 13.7;
+    let isIntersecting = false;
 
     function resize() {
       if (!canvas) return;
@@ -151,7 +155,7 @@ function SignalTrace({ accent, seed }: { accent: string; seed: number }) {
     resize();
 
     function draw() {
-      if (!canvas || !ctx) return;
+      if (!isIntersecting || !canvas || !ctx) return;
       const rect = canvas.getBoundingClientRect();
       const w = rect.width;
       const h = rect.height;
@@ -221,13 +225,27 @@ function SignalTrace({ accent, seed }: { accent: string; seed: number }) {
       t += 0.016;
       raf = requestAnimationFrame(draw);
     }
-    draw();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) {
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(draw);
+        } else {
+          cancelAnimationFrame(raf);
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
 
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
 
     return () => {
       cancelAnimationFrame(raf);
+      observer.disconnect();
       ro.disconnect();
     };
   }, [accent, seed]);
@@ -541,9 +559,9 @@ export default function ProjectsSection() {
               <a
                 href="#contact"
                 onClick={(e) => handleCtaClick(e, "live")}
-                className="group cursor-pointer rounded-lg bg-gradient-to-r from-brand-accent-light to-brand-accent-dark p-0.5 hover:scale-[1.02] transition-transform"
+                className="group cursor-pointer rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 p-0.5 hover:scale-[1.02] transition-transform"
               >
-                <div className="flex items-center gap-2 rounded-md bg-zinc-950 px-4 py-2 text-xs font-mono font-semibold text-white group-hover:bg-gradient-to-r group-hover:from-brand-accent-light group-hover:to-brand-accent-dark transition-all">
+                <div className="flex items-center gap-2 rounded-md bg-zinc-950 px-4 py-2 text-xs font-mono font-semibold text-white group-hover:bg-gradient-to-r group-hover:from-emerald-500 group-hover:to-emerald-600 transition-all">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-0.5 transition-transform">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>

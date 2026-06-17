@@ -70,7 +70,7 @@ export default function HowIWorkSection() {
           viewBox="0 0 50 50"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="text-brand-accent-light animate-[spin_10s_linear_infinite]"
+          className="text-emerald-500 animate-[spin_10s_linear_infinite]"
         >
           <path
             d="M25 15C19.48 15 15 19.48 15 25C15 30.52 19.48 35 25 35C30.52 35 35 30.52 35 25C35 19.48 30.52 15 25 15ZM25 32C21.13 32 18 28.87 18 25C18 21.13 21.13 18 25 18C28.87 18 32 21.13 32 25C32 28.87 28.87 32 25 32Z"
@@ -104,7 +104,7 @@ export default function HowIWorkSection() {
               key={step.num}
               onMouseEnter={() => setActiveStep(idx)}
               onMouseLeave={() => setActiveStep(null)}
-              className="group relative flex flex-col justify-between rounded-xl border border-zinc-800/80 bg-zinc-950/60 p-6 transition-all duration-300 hover:scale-[1.02] hover:border-brand-accent-light/40 hover:shadow-[0_8px_30px_rgba(16,185,129,0.08)] overflow-hidden"
+              className="group relative flex flex-col justify-between rounded-xl border border-zinc-800/80 bg-zinc-950/60 p-6 transition-all duration-300 hover:scale-[1.02] hover:border-emerald-500/40 hover:shadow-[0_8px_30px_rgba(16,185,129,0.08)] overflow-hidden"
               style={{
                 background: "linear-gradient(135deg, rgba(9,9,11,0.8) 0%, rgba(17,18,22,0.8) 100%)",
               }}
@@ -114,14 +114,14 @@ export default function HowIWorkSection() {
               
               {/* Radial glow focus */}
               <div
-                className="absolute -right-8 -top-8 w-24 h-24 bg-brand-accent-light/5 blur-[20px] rounded-full pointer-events-none transition-opacity duration-300"
+                className="absolute -right-8 -top-8 w-24 h-24 bg-emerald-500/5 blur-[20px] rounded-full pointer-events-none transition-opacity duration-300"
                 style={{ opacity: isHovered ? 1 : 0 }}
               />
 
               <div>
                 {/* Step Header */}
                 <div className="flex items-center justify-between border-b border-white/5 pb-3.5 mb-4">
-                  <span className="font-mono text-xs font-bold text-brand-accent-light bg-brand-accent-light/10 px-2 py-0.5 rounded">
+                  <span className="font-mono text-xs font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">
                     PHASE {step.num}
                   </span>
                   <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-500 font-semibold">
@@ -131,7 +131,7 @@ export default function HowIWorkSection() {
 
                 {/* Step Title & Icon */}
                 <div className="flex items-center gap-2.5 mt-2">
-                  <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-brand-accent-light group-hover:border-brand-accent-light/30 transition-colors">
+                  <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-emerald-500 group-hover:border-emerald-500/30 transition-colors">
                     {step.icon}
                   </div>
                   <h4 className="text-white font-sans font-bold text-base leading-snug">

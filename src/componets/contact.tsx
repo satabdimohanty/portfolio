@@ -246,7 +246,7 @@ export default function ContactSection() {
               viewBox="0 0 41 41"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="text-brand-accent-light"
+              className="text-emerald-500"
             >
               <path d="M10 31L31 10M31 10H14M31 10V27" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -269,7 +269,7 @@ export default function ContactSection() {
               className="w-full rounded-2xl border border-zinc-800 bg-zinc-950/65 backdrop-blur-md p-4 md:p-5 shadow-xl relative overflow-hidden flex flex-col sm:flex-row md:flex-col items-center justify-between md:justify-between gap-4 transition-all duration-300 hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] hover:scale-[1.02]"
             >
               {/* Radial glow focus */}
-              <div className="absolute -left-10 -top-10 w-28 h-28 bg-brand-accent-light/5 blur-[25px] rounded-full pointer-events-none" />
+              <div className="absolute -left-10 -top-10 w-28 h-28 bg-emerald-500/5 blur-[25px] rounded-full pointer-events-none" />
 
               {/* Email link with envelope icon */}
               <div className="flex items-center md:flex-col gap-3 md:gap-2.5 w-full sm:w-auto md:w-full relative z-10">
@@ -279,7 +279,7 @@ export default function ContactSection() {
                   </svg>
                 </div>
                 <div className="text-left md:text-center w-full">
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-brand-accent-light font-bold block mb-1">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-emerald-500 font-bold block mb-1">
                     [EMAIL CHANNEL] • ACTIVE
                   </span>
                   <a
@@ -318,7 +318,7 @@ export default function ContactSection() {
               className="w-full rounded-2xl border border-zinc-800 bg-zinc-950/65 backdrop-blur-md p-4 md:p-5 shadow-xl relative overflow-hidden flex flex-col sm:flex-row md:flex-col items-center justify-between md:justify-between gap-4 transition-all duration-300 hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] hover:scale-[1.02]"
             >
               {/* Radial glow focus */}
-              <div className="absolute -left-10 -top-10 w-28 h-28 bg-brand-accent-light/5 blur-[25px] rounded-full pointer-events-none" />
+              <div className="absolute -left-10 -top-10 w-28 h-28 bg-emerald-500/5 blur-[25px] rounded-full pointer-events-none" />
 
               {/* Phone link with telephone receiver icon */}
               <div className="flex items-center md:flex-col gap-3 md:gap-2.5 w-full sm:w-auto md:w-full relative z-10">
@@ -328,7 +328,7 @@ export default function ContactSection() {
                   </svg>
                 </div>
                 <div className="text-left md:text-center w-full">
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-brand-accent-light font-bold block mb-1">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-emerald-500 font-bold block mb-1">
                     [VOICE CHANNEL] • AVAILABLE
                   </span>
                   <a
@@ -367,7 +367,7 @@ export default function ContactSection() {
               className="w-full rounded-2xl border border-zinc-800 bg-zinc-950/65 backdrop-blur-md p-4 md:p-5 shadow-xl relative overflow-hidden flex flex-col sm:flex-row md:flex-col items-center justify-between md:justify-between gap-4 transition-all duration-300 hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] hover:scale-[1.02]"
             >
               {/* Radial glow focus */}
-              <div className="absolute -left-10 -top-10 w-28 h-28 bg-brand-accent-light/5 blur-[25px] rounded-full pointer-events-none" />
+              <div className="absolute -left-10 -top-10 w-28 h-28 bg-emerald-500/5 blur-[25px] rounded-full pointer-events-none" />
 
               {/* Resume link with document icon */}
               <div className="flex items-center md:flex-col gap-3 md:gap-2.5 w-full sm:w-auto md:w-full relative z-10">
@@ -377,7 +377,7 @@ export default function ContactSection() {
                   </svg>
                 </div>
                 <div className="text-left md:text-center w-full">
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-brand-accent-light font-bold block mb-1">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-emerald-500 font-bold block mb-1">
                     [RESUME CHANNEL] • VERIFIED PDF
                   </span>
                   <a
@@ -452,7 +452,7 @@ export default function ContactSection() {
           <div className="flex flex-col items-start justify-start gap-4 md:flex-row md:gap-12">
             <div className="flex flex-col items-start gap-1">
               <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-mono">Crafted By</span>
-              <a href="https://github.com/satabdimohanty" className="font-serif text-lg font-normal italic text-white hover:text-brand-accent-light transition-colors">
+              <a href="https://github.com/satabdimohanty" className="font-serif text-lg font-normal italic text-white hover:text-emerald-500 transition-colors">
                 Satabdi Mohanty
               </a>
             </div>
@@ -460,9 +460,9 @@ export default function ContactSection() {
             <div className="flex flex-col items-start gap-1">
               <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-mono">Crafted Using</span>
               <div className="font-serif text-lg font-normal italic text-zinc-300">
-                <a href="https://nextjs.org" className="text-white hover:text-brand-accent-light transition-colors" target="_blank" rel="noreferrer">Next.js</a>,{" "}
-                <a href="https://typescriptlang.org" className="text-white hover:text-brand-accent-light transition-colors" target="_blank" rel="noreferrer">TypeScript</a>,{" "}
-                <a href="https://tailwindcss.com" className="text-white hover:text-brand-accent-light transition-colors" target="_blank" rel="noreferrer">Tailwind CSS</a>
+                <a href="https://nextjs.org" className="text-white hover:text-emerald-500 transition-colors" target="_blank" rel="noreferrer">Next.js</a>,{" "}
+                <a href="https://typescriptlang.org" className="text-white hover:text-emerald-500 transition-colors" target="_blank" rel="noreferrer">TypeScript</a>,{" "}
+                <a href="https://tailwindcss.com" className="text-white hover:text-emerald-500 transition-colors" target="_blank" rel="noreferrer">Tailwind CSS</a>
               </div>
             </div>
           </div>

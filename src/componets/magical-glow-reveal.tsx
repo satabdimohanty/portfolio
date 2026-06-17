@@ -30,8 +30,10 @@ export default function MagicalGlowReveal({
   useEffect(() => {
     const el = containerRef.current;
     if (!el || reducedMotion) {
-      setIsVisible(true);
-      return;
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 0);
+      return () => clearTimeout(timer);
     }
 
     const observer = new IntersectionObserver(

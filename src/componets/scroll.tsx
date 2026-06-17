@@ -64,8 +64,10 @@ export default function ScrollReveal({
   useEffect(() => {
     const el = ref.current;
     if (!el || reducedMotion) {
-      setIsVisible(true);
-      return;
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 0);
+      return () => clearTimeout(timer);
     }
 
     const observer = new IntersectionObserver(

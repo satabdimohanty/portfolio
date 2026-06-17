@@ -45,21 +45,28 @@ export default function Navbar() {
       setActiveSection(currentActive);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Defer adding listener and initial run to prevent state updates during mount phase
+    const startTimeout = setTimeout(() => {
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+    }, 50);
+
+    return () => {
+      clearTimeout(startTimeout);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <>
       {/* Scroll Progress Bar */}
       <div
-        className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-brand-accent-light to-brand-accent-dark z-50 transition-all duration-75 ease-out"
+        className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-emerald-500 to-emerald-600 z-50 transition-all duration-75 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
       {/* Floating Navbar Container */}
-      <header className="fixed top-0 left-0 right-0 z-50 w-full pt-4">
-        <div className="mx-auto w-[calc(100%-2rem)] max-w-5xl flex items-center justify-between magical-navbar-texture border border-zinc-800/80 py-2.5 px-5 shadow-[0_8px_32px_rgba(2,24,18,0.45),0_0_20px_rgba(16,185,129,0.1)] rounded-full backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-50 pt-4 px-4">
+        <div className="mx-auto w-full max-w-5xl flex items-center justify-between magical-navbar-texture border border-zinc-800/80 py-2.5 px-5 shadow-[0_8px_32px_rgba(2,24,18,0.45),0_0_20px_rgba(16,185,129,0.15)] rounded-full backdrop-blur-md">
           {/* Logo with clean hover scaling */}
           <a
             href="#about"
@@ -78,7 +85,6 @@ export default function Navbar() {
             />
           </a>
 
-          {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-0.5 bg-zinc-900/30 border border-zinc-800/40 rounded-full p-0.5 backdrop-blur-sm">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.slice(1);
@@ -88,7 +94,7 @@ export default function Navbar() {
                   href={link.href}
                   className={`cursor-pointer rounded-full px-3 py-1 text-[11px] lg:text-xs font-mono font-medium tracking-wide transition-all duration-300 ${
                     isActive
-                      ? "text-white bg-gradient-to-r from-brand-accent-light/20 to-brand-accent-dark/20 border border-brand-accent-light/35 shadow-[0_0_12px_rgba(16,185,129,0.15)]"
+                      ? "text-white bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 border border-emerald-500/35 shadow-[0_0_12px_rgba(16,185,129,0.15)]"
                       : "text-zinc-400 hover:text-white hover:bg-zinc-900/40 border border-transparent"
                   }`}
                 >
@@ -102,7 +108,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <a
               href="#contact"
-              className="group cursor-pointer rounded-full bg-gradient-to-r from-brand-accent-light to-brand-accent-dark p-[1px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(16,185,129,0.25)] active:scale-95"
+              className="hidden md:inline-flex group cursor-pointer rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 p-[1px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(16,185,129,0.25)] active:scale-95"
             >
               <div className="flex items-center gap-2 rounded-full bg-zinc-950 px-4 py-1.5 text-xs lg:text-sm font-mono font-medium tracking-wide text-white group-hover:bg-transparent transition-colors duration-300">
                 <svg
@@ -124,78 +130,82 @@ export default function Navbar() {
             {/* Mobile Hamburg menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex items-center rounded-full border border-zinc-800 bg-zinc-900/60 p-2 text-white md:hidden hover:bg-zinc-800 transition-colors"
+              className="flex items-center justify-center h-10 w-10 shrink-0 rounded-full border border-brand-accent-light/30 bg-zinc-900/80 text-white md:hidden hover:border-brand-accent-light hover:text-brand-accent-light transition-all duration-300"
               aria-label="Toggle Menu"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2.5"
-                stroke="currentColor"
-                className="h-4 w-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
-                />
-              </svg>
+              {mobileMenuOpen ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </header>
 
       {/* Mobile Drawer Navigation Menu */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-zinc-950/90 backdrop-blur-xl flex flex-col justify-center items-center gap-8 md:hidden transition-all duration-300">
-          <button
-            onClick={() => setMobileMenuOpen(false)}
-            className="absolute top-8 right-6 rounded-full border border-zinc-800 bg-zinc-900 p-2.5 text-white hover:bg-zinc-800 hover:scale-105 active:scale-95 transition-all"
-            aria-label="Close Menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2.5"
-              stroke="currentColor"
-              className="h-4 w-4"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-          
-          <nav className="flex flex-col items-center gap-6">
-            {NAV_LINKS.map((link, idx) => {
-              const isActive = activeSection === link.href.slice(1);
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`font-mono text-2xl font-semibold tracking-tight transition-all duration-300 hover:scale-105 active:scale-95 ${
-                    isActive ? "text-brand-accent-light scale-105" : "text-zinc-400 hover:text-white"
-                  }`}
-                  style={{ animationDelay: `${idx * 50}ms` }}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
-          </nav>
+      <div
+        className={`fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-xl flex flex-col justify-center items-center gap-8 md:hidden transition-all duration-300 ${
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <nav
+          className={`flex flex-col items-center gap-6 transition-transform duration-300 ${
+            mobileMenuOpen ? "translate-y-0" : "translate-y-4"
+          }`}
+        >
+          {NAV_LINKS.map((link, idx) => {
+            const isActive = activeSection === link.href.slice(1);
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-mono text-2xl font-semibold tracking-tight transition-all duration-300 hover:scale-105 active:scale-95 ${
+                  isActive ? "text-emerald-500 scale-105" : "text-zinc-400 hover:text-white"
+                }`}
+                style={{ animationDelay: `${idx * 50}ms` }}
+              >
+                {link.label}
+              </a>
+            );
+          })}
+        </nav>
 
-          <a
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="mt-4 group cursor-pointer rounded-full bg-gradient-to-r from-brand-accent-light to-brand-accent-dark p-[1px] hover:scale-105 active:scale-95 transition-transform"
-          >
-            <div className="flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-2.5 text-base font-mono font-medium tracking-wide text-white group-hover:bg-transparent transition-colors">
-              <span>Get In Touch</span>
-            </div>
-          </a>
-        </div>
-      )}
+        <a
+          href="#contact"
+          onClick={() => setMobileMenuOpen(false)}
+          className={`group cursor-pointer rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 p-[1px] hover:scale-105 active:scale-95 transition-all duration-300 ${
+            mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
+        >
+          <div className="flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-2.5 text-base font-mono font-medium tracking-wide text-white group-hover:bg-transparent transition-colors">
+            <span>Get In Touch</span>
+          </div>
+        </a>
+      </div>
     </>
   );
 }

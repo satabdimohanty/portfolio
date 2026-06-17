@@ -28,6 +28,7 @@ interface Sparkle {
   rotationSpeed: number;
   life: number;
   maxLife: number;
+  char: string;
 }
 
 const SECTIONS = [
@@ -81,7 +82,7 @@ export default function MagicalScrollEffects() {
     let rafId: number;
     let particles: Particle[] = [];
     let sparkles: Sparkle[] = [];
-    const maxParticles = 120;
+    const maxParticles = 45;
 
     // Initialize Canvas Dimensions
     const resizeCanvas = () => {
@@ -187,28 +188,34 @@ export default function MagicalScrollEffects() {
       setActiveSection((prev) => (prev !== currentSection ? currentSection : prev));
     };
 
-    window.addEventListener("scroll", tickScroll, { passive: true });
-    tickScroll();
+    // Defer scroll listener and initial progress styling to prevent state updates during mount phase
+    const startTimeout = setTimeout(() => {
+      window.addEventListener("scroll", tickScroll, { passive: true });
+      tickScroll();
+    }, 50);
 
-    // Spawn Sparkles at target coordinates
+    // Spawn Sparkles at target coordinates (Syntax/Code symbols)
     const spawnSparkles = (x: number, y: number, count: number, forceMultiplier: number) => {
       const sparkleColors = ["#10b981", "#34d399", "#a78bfa", "#e879f9", "#ffffff"];
+      const codeSymbols = ["{ }", "( )", "< />", "[ ]", "=>", ";", "const", "fn", "</>", "&&", "||", "++"];
+      
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 2.5 * forceMultiplier + 0.5;
+        const speed = Math.random() * 2.0 * forceMultiplier + 0.5;
         const maxLife = Math.random() * 40 + 20;
         sparkles.push({
           x,
           y,
           vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 0.5,
-          size: Math.random() * 3 + 1,
+          vy: Math.sin(angle) * speed - 0.4,
+          size: Math.floor(Math.random() * 5 + 9), // Font size in px (9px to 14px)
           color: sparkleColors[Math.floor(Math.random() * sparkleColors.length)],
           alpha: 1,
-          rotation: Math.random() * Math.PI * 2,
-          rotationSpeed: (Math.random() - 0.5) * 0.15,
+          rotation: (Math.random() - 0.5) * 0.8,
+          rotationSpeed: (Math.random() - 0.5) * 0.06,
           life: maxLife,
           maxLife,
+          char: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
         });
       }
     };
@@ -284,11 +291,22 @@ export default function MagicalScrollEffects() {
           ctx.quadraticCurveTo(p.x, p.y, p.x - r, p.y);
           ctx.quadraticCurveTo(p.x, p.y, p.x, p.y - r);
           ctx.fill();
+          
+          // Fast star glow overlay
+          ctx.globalAlpha = p.alpha * 0.25;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, r * 1.8, 0, Math.PI * 2);
+          ctx.fill();
         } else {
+          // Core particle circle
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = p.color;
+          ctx.fill();
+          
+          // Soft outer glow overlay (faster than shadowBlur)
+          ctx.globalAlpha = p.alpha * 0.3;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size * 2.5, 0, Math.PI * 2);
           ctx.fill();
         }
         ctx.restore();
@@ -334,21 +352,18 @@ export default function MagicalScrollEffects() {
         ctx.rotate(s.rotation);
         ctx.globalAlpha = s.alpha;
         ctx.fillStyle = s.color;
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = s.color;
 
-        ctx.beginPath();
-        const r = s.size * (0.5 + s.alpha * 0.8);
-        ctx.moveTo(0, -r * 1.8);
-        ctx.lineTo(r * 0.6, -r * 0.6);
-        ctx.lineTo(r * 1.8, 0);
-        ctx.lineTo(r * 0.6, r * 0.6);
-        ctx.lineTo(0, r * 1.8);
-        ctx.lineTo(-r * 0.6, r * 0.6);
-        ctx.lineTo(-r * 1.8, 0);
-        ctx.lineTo(-r * 0.6, -r * 0.6);
-        ctx.closePath();
-        ctx.fill();
+        // Draw coding syntax text
+        ctx.font = `bold ${s.size}px JetBrains Mono, var(--font-mono), monospace`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(s.char, 0, 0);
+
+        // Soft outer glowing duplicate text (very fast)
+        ctx.globalAlpha = s.alpha * 0.25;
+        ctx.font = `bold ${s.size + 3}px JetBrains Mono, var(--font-mono), monospace`;
+        ctx.fillText(s.char, 0, 0);
+
         ctx.restore();
       });
 
@@ -361,6 +376,7 @@ export default function MagicalScrollEffects() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      clearTimeout(startTimeout);
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);

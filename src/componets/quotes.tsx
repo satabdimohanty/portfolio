@@ -2,7 +2,7 @@
 
 export function AdidasQuote() {
   return (
-    <div id="banner" className="mt-20 bg-gradient-to-r from-brand-accent-light to-brand-accent-dark py-12 md:mt-32">
+    <div id="banner" className="mt-20 bg-gradient-to-r from-emerald-500 to-emerald-600 py-12 md:mt-32">
       <div className="mx-auto max-w-5xl px-6 lg:px-0">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-[1fr_2fr]">
           <div className="text-xl text-white">

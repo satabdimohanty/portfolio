@@ -38,7 +38,7 @@ export default function AchievementsSection() {
           viewBox="0 0 69 55"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="text-brand-accent-light"
+          className="text-emerald-500"
         >
           <path d="M12 45L34.5 10L57 45H12Z" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" />
           <path d="M22 35L44.5 2L67 35H22Z" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="2" />
@@ -62,8 +62,8 @@ export default function AchievementsSection() {
             <div key={idx} className="relative flex flex-col md:flex-row items-start md:items-center justify-between mb-12 last:mb-0">
               {/* Timeline circle node */}
               <div className="absolute left-6 md:left-1/2 -translate-x-1/2 z-10 flex items-center justify-center">
-                <div className="w-12 h-12 md:w-15 md:h-15 rounded-full border border-zinc-800 bg-card-bg flex flex-col items-center justify-center shadow-[0_0_12px_rgba(16,185,129,0.15)] hover:border-brand-accent-light/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300 select-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 md:w-5.5 md:h-5.5 text-brand-accent-light">
+                <div className="w-12 h-12 md:w-15 md:h-15 rounded-full border border-zinc-800 bg-card-bg flex flex-col items-center justify-center shadow-[0_0_12px_rgba(16,185,129,0.15)] hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300 select-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 md:w-5.5 md:h-5.5 text-emerald-500">
                     <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
                     <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
                   </svg>
@@ -76,16 +76,16 @@ export default function AchievementsSection() {
               {/* Content Box */}
               <div className={`w-full md:w-[calc(50%-2.5rem)] ml-16 md:ml-0 ${idx % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}>
                 <div
-                  className="relative rounded-xl border border-zinc-800/80 magical-card-texture p-5 md:p-6 shadow-xl hover:border-brand-accent-light/40 transition-all duration-300 group text-left"
+                  className="relative rounded-xl border border-zinc-800/80 magical-card-texture p-5 md:p-6 shadow-xl hover:border-emerald-500/40 transition-all duration-300 group text-left"
                 >
                   {/* Triangle pointer (desktop) */}
                   <div className={`absolute top-6 w-0 h-0 border-t-6 border-t-transparent border-b-6 border-b-transparent hidden md:block
                     ${idx % 2 === 0 
-                      ? "-right-[6px] border-l-6 border-l-zinc-800 group-hover:border-l-brand-accent-light/40 transition-colors" 
-                      : "-left-[6px] border-r-6 border-r-zinc-800 group-hover:border-r-brand-accent-light/40 transition-colors"}`} 
+                      ? "-right-[6px] border-l-6 border-l-zinc-800 group-hover:border-l-emerald-500/40 transition-colors" 
+                      : "-left-[6px] border-r-6 border-r-zinc-800 group-hover:border-r-emerald-500/40 transition-colors"}`} 
                   />
                   {/* Triangle pointer (mobile) */}
-                  <div className="absolute top-6 -left-[6px] w-0 h-0 border-t-6 border-t-transparent border-b-6 border-b-transparent border-r-6 border-r-zinc-800 group-hover:border-r-brand-accent-light/40 transition-colors md:hidden" />
+                  <div className="absolute top-6 -left-[6px] w-0 h-0 border-t-6 border-t-transparent border-b-6 border-b-transparent border-r-6 border-r-zinc-800 group-hover:border-r-emerald-500/40 transition-colors md:hidden" />
 
                   {/* Date Metadata */}
                   <span className="text-[10px] font-mono text-emerald-200 tracking-wider font-semibold uppercase">{item.date}</span>

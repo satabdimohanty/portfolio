@@ -54,8 +54,15 @@ export default function SmoothScrollProvider({
     }
     const rafId = requestAnimationFrame(raf);
 
+    // Dynamic resize handler for keeping scrolling smooth when layout changes
+    const resizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+    });
+    resizeObserver.observe(document.body);
+
     return () => {
       cancelAnimationFrame(rafId);
+      resizeObserver.disconnect();
       lenis.destroy();
       lenisRef.current = null;
     };
