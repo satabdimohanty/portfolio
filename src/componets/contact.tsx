@@ -465,30 +465,12 @@ export default function ContactSection() {
                 <a href="https://tailwindcss.com" className="text-white hover:text-emerald-500 transition-colors" target="_blank" rel="noreferrer">Tailwind CSS</a>
               </div>
             </div>
-          </div>
-
-          <a
-            href="https://vercel.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-lg bg-zinc-900 border border-zinc-850 px-4 py-2 hover:bg-zinc-800 transition-colors text-xs text-zinc-300"
-          >
-            <span>Proudly Hosted on Vercel</span>
-            <svg width="12" height="12" viewBox="0 0 116 100" fill="currentColor" className="text-white">
-              <path d="M57.5 0L115 100H0L57.5 0Z" />
-            </svg>
-          </a>
+          </div>          {/* Hosting badge removed */}
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-zinc-900 pt-6 text-xs text-zinc-400">
           <p className="font-mono">
             © 2026 Satabdi Mohanty. All rights reserved.
-          </p>
-          <p className="text-zinc-500">
-            This site and its content is licensed under{" "}
-            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank" rel="license noopener noreferrer" className="underline hover:text-zinc-350 transition-colors">
-              CC BY-NC-ND 4.0
-            </a>.
           </p>
         </div>
       </footer>
