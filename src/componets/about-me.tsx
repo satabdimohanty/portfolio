@@ -314,7 +314,7 @@ export default function AboutSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 00-2 2z" />
                   </svg>
                   <div>
-                    <div className="font-sans text-xs sm:text-[12px] font-bold text-white">2.5+ Years Exp.</div>
+                    <div className="font-sans text-xs sm:text-[12px] font-bold text-white">2.6+ Years Exp.</div>
                     <div className="text-[9px] uppercase tracking-wider text-zinc-400 mt-0.5">Experience</div>
                   </div>
                 </div>
@@ -369,7 +369,7 @@ export default function AboutSection() {
               </div>
 
               <p className="text-zinc-100 text-[13px] sm:text-sm leading-relaxed">
-                I'm <strong className="text-white font-semibold">Satabdi Mohanty</strong>, a <strong className="text-white font-semibold">Frontend Developer</strong> with over <strong className="text-emerald-200 font-semibold">2.5 years of experience</strong> in web application development. I'm passionate about building clean, performant, and responsive interfaces with strict attention to pixel-perfection. Currently, I am a Software Associate at <strong className="text-white font-semibold">Softree Technology</strong>, focusing on modern web development stacks like <strong className="text-white font-semibold">React, Next.js, and TypeScript</strong>. Writing clean, maintainable logic and optimized user-centric flows are at the core of my development philosophy.
+                I'm <strong className="text-white font-semibold">Satabdi Mohanty</strong>, a <strong className="text-white font-semibold">Frontend Developer</strong> with over <strong className="text-emerald-200 font-semibold">2.6 years of experience</strong> in web application development. I'm passionate about building clean, performant, and responsive interfaces with strict attention to pixel-perfection. Currently, I am a Software Associate at <strong className="text-white font-semibold">Softree Technology</strong>, focusing on modern web development stacks like <strong className="text-white font-semibold">React, Next.js, and TypeScript</strong>. Writing clean, maintainable logic and optimized user-centric flows are at the core of my development philosophy.
               </p>
               
               {/* Social Links Row */}

@@ -99,7 +99,7 @@ export default function HeroSection() {
             {/* Bio */}
             <p className="text-sm text-slate-400 leading-[1.8] max-w-md mb-8">
               A passionate <span className="text-slate-200 font-medium">Frontend Developer</span> with{" "}
-              <span className="text-slate-200 font-medium">2.5+ years</span> of experience building responsive,
+              <span className="text-slate-200 font-medium">2.6+ years</span> of experience building responsive,
               SEO-friendly, and high-performance web applications. Focused on crafting premium user interfaces with{" "}
               <span className="text-slate-200 font-medium">Next.js, React, and TypeScript</span>, optimizing core web vitals,
               and translating complex design designs into clean, maintainable code.
@@ -158,7 +158,7 @@ export default function HeroSection() {
               { ln: "11", content: <span className="text-slate-500">{"];"}</span> },
               { ln: "12", content: <>&nbsp;</> },
               { ln: "13", content: <span className="text-slate-600">{"// experience"}</span> },
-              { ln: "14", content: <><span className="text-violet-400">export const</span> <span className="text-sky-300">exp</span> <span className="text-slate-500">=</span> <span className="text-emerald-400">'2.5+ years'</span><span className="text-slate-500">;</span></> },
+              { ln: "14", content: <><span className="text-violet-400">export const</span> <span className="text-sky-300">exp</span> <span className="text-slate-500">=</span> <span className="text-emerald-400">'2.6+ years'</span><span className="text-slate-500">;</span></> },
             ].map(({ ln, content }, i) => (
               <div
                 key={ln}
