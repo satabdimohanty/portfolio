@@ -66,24 +66,7 @@ export default function Navbar() {
       />
       {/* Floating Navbar Container */}
       <header className="fixed top-0 left-0 right-0 z-50 pt-4 px-4">
-        <div className="mx-auto w-full max-w-5xl flex items-center justify-between magical-navbar-texture border border-zinc-800/80 py-2.5 px-5 shadow-[0_8px_32px_rgba(2,24,18,0.45),0_0_20px_rgba(16,185,129,0.15)] rounded-full backdrop-blur-md">
-          {/* Logo with clean hover scaling */}
-          <a
-            href="#about"
-            className="cursor-pointer block transition-transform duration-300 hover:scale-105 active:scale-95"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-            }}
-          >
-            <img
-              src="/logo.svg"
-              alt="Satabdi Mohanty - Portfolio"
-              width="156"
-              height="47"
-              className="h-9 w-auto"
-            />
-          </a>
+        <div className="mx-auto w-fit flex items-center justify-center gap-4 magical-navbar-texture border border-zinc-800/80 py-2.5 px-5 shadow-[0_8px_32px_rgba(2,24,18,0.45),0_0_20px_rgba(16,185,129,0.15)] rounded-full backdrop-blur-md">
 
           <nav className="hidden md:flex items-center gap-0.5 bg-zinc-900/30 border border-zinc-800/40 rounded-full p-0.5 backdrop-blur-sm">
             {NAV_LINKS.map((link) => {
@@ -108,7 +91,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <a
               href="#contact"
-              className="hidden md:inline-flex group cursor-pointer rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 p-[1px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(16,185,129,0.25)] active:scale-95"
+              className="inline-flex group cursor-pointer rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 p-[1px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(16,185,129,0.25)] active:scale-95"
             >
               <div className="flex items-center gap-2 rounded-full bg-zinc-950 px-4 py-1.5 text-xs lg:text-sm font-mono font-medium tracking-wide text-white group-hover:bg-transparent transition-colors duration-300">
                 <svg

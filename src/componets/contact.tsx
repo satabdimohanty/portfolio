@@ -125,13 +125,13 @@ export default function ContactSection() {
               <div className="absolute -left-10 -top-10 w-28 h-28 bg-emerald-500/5 blur-[25px] rounded-full pointer-events-none" />
 
               {/* Email link with envelope icon */}
-              <div className="flex items-center md:flex-col gap-3 md:gap-2.5 w-full sm:w-auto md:w-full relative z-10">
+              <div className="flex flex-col sm:flex-row md:flex-col items-center justify-center sm:justify-start md:justify-center gap-3 md:gap-2.5 w-full sm:w-auto md:w-full relative z-10">
                 <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
                   <svg className="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <div className="text-left md:text-center w-full">
+                <div className="text-center sm:text-left md:text-center w-full">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-emerald-500 font-bold block mb-1">
                     [EMAIL CHANNEL] • ACTIVE
                   </span>
@@ -174,13 +174,13 @@ export default function ContactSection() {
               <div className="absolute -left-10 -top-10 w-28 h-28 bg-emerald-500/5 blur-[25px] rounded-full pointer-events-none" />
 
               {/* Phone link with telephone receiver icon */}
-              <div className="flex items-center md:flex-col gap-3 md:gap-2.5 w-full sm:w-auto md:w-full relative z-10">
+              <div className="flex flex-col sm:flex-row md:flex-col items-center justify-center sm:justify-start md:justify-center gap-3 md:gap-2.5 w-full sm:w-auto md:w-full relative z-10">
                 <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
                   <svg className="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
-                <div className="text-left md:text-center w-full">
+                <div className="text-center sm:text-left md:text-center w-full">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-emerald-500 font-bold block mb-1">
                     [VOICE CHANNEL] • AVAILABLE
                   </span>
@@ -223,13 +223,13 @@ export default function ContactSection() {
               <div className="absolute -left-10 -top-10 w-28 h-28 bg-emerald-500/5 blur-[25px] rounded-full pointer-events-none" />
 
               {/* Resume link with document icon */}
-              <div className="flex items-center md:flex-col gap-3 md:gap-2.5 w-full sm:w-auto md:w-full relative z-10">
+              <div className="flex flex-col sm:flex-row md:flex-col items-center justify-center sm:justify-start md:justify-center gap-3 md:gap-2.5 w-full sm:w-auto md:w-full relative z-10">
                 <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
                   <svg className="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <div className="text-left md:text-center w-full">
+                <div className="text-center sm:text-left md:text-center w-full">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-emerald-500 font-bold block mb-1">
                     [RESUME CHANNEL] • VERIFIED PDF
                   </span>

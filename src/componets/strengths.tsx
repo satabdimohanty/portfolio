@@ -35,37 +35,60 @@ export default function StrengthsSection() {
         </p>
       </div>
 
-      <div className="mt-12 flex items-stretch h-[320px] md:h-[380px] relative">
+      {/* Mobile Layout: Horizontal Progress Bars */}
+      <div className="md:hidden flex flex-col gap-5 w-full mt-10">
+        {STRENGTHS.map((s) => (
+          <div key={s.name} className="flex flex-col gap-2">
+            <div className="flex justify-between items-center font-mono text-xs font-bold text-zinc-300">
+              <span className="tracking-widest">{s.name}</span>
+              <span className="text-emerald-400">{s.val}%</span>
+            </div>
+            <div className="h-4 w-full bg-zinc-900 border border-zinc-800 rounded-full overflow-hidden relative p-[1.5px] shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)]">
+              {/* Fill progress */}
+              <div
+                className="h-full bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.3)] relative"
+                style={{ width: `${s.val}%` }}
+              >
+                {/* Visual texture scanline overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.07)_50%,transparent_50%)] bg-[size:100%_4px] pointer-events-none opacity-40" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop Layout: Vertical Bar Chart */}
+      <div className="mt-12 hidden md:flex items-stretch h-[380px] relative">
         {/* Left 'ME' Bracket */}
-        <div className="flex items-center gap-3 pr-4 md:pr-8 border-r border-white/5">
+        <div className="flex items-center gap-3 pr-8 border-r border-white/5">
           <div className="h-[90%] w-3 border-y-2 border-l-2 border-zinc-800 rounded-l" />
-          <span className="font-mono text-xs md:text-sm tracking-widest text-zinc-500 font-bold uppercase [writing-mode:vertical-lr] rotate-180">
+          <span className="font-mono text-sm tracking-widest text-zinc-500 font-bold uppercase [writing-mode:vertical-lr] rotate-180">
             ME
           </span>
         </div>
 
         {/* Chart Area */}
-        <div className="flex-grow relative px-6 md:px-12 flex justify-between items-end">
+        <div className="flex-grow relative px-12 flex justify-between items-end">
           {/* Horizontal dotted grid lines */}
           <div className="absolute inset-x-0 inset-y-0 flex flex-col justify-between py-8 pointer-events-none">
             <div className="w-full flex items-center justify-between border-t border-dashed border-zinc-800/80 relative">
-              <span className="absolute right-0 translate-x-[calc(100%+8px)] text-[9px] md:text-[10px] font-mono text-zinc-500 uppercase tracking-wide">Best</span>
+              <span className="absolute right-0 translate-x-[calc(100%+8px)] text-[10px] font-mono text-zinc-500 uppercase tracking-wide">Best</span>
             </div>
             <div className="w-full flex items-center justify-between border-t border-dashed border-zinc-800/80 relative">
-              <span className="absolute right-0 translate-x-[calc(100%+8px)] text-[9px] md:text-[10px] font-mono text-zinc-500 uppercase tracking-wide">Better</span>
+              <span className="absolute right-0 translate-x-[calc(100%+8px)] text-[10px] font-mono text-zinc-500 uppercase tracking-wide">Better</span>
             </div>
             <div className="w-full flex items-center justify-between border-t border-dashed border-zinc-800/80 relative">
-              <span className="absolute right-0 translate-x-[calc(100%+8px)] text-[9px] md:text-[10px] font-mono text-zinc-500 uppercase tracking-wide">Pretty Good</span>
+              <span className="absolute right-0 translate-x-[calc(100%+8px)] text-[10px] font-mono text-zinc-500 uppercase tracking-wide">Pretty Good</span>
             </div>
             <div className="w-full flex items-center justify-between border-t border-dashed border-zinc-800/80 relative">
-              <span className="absolute right-0 translate-x-[calc(100%+8px)] text-[9px] md:text-[10px] font-mono text-zinc-500 uppercase tracking-wide">Good</span>
+              <span className="absolute right-0 translate-x-[calc(100%+8px)] text-[10px] font-mono text-zinc-500 uppercase tracking-wide">Good</span>
             </div>
           </div>
 
           {/* Bar columns */}
-          <div className="w-full h-full flex justify-around items-end z-10 pt-4 pr-16 md:pr-24">
+          <div className="w-full h-full flex justify-around items-end z-10 pt-4 pr-24">
             {STRENGTHS.map((s) => (
-              <div key={s.name} className="flex flex-col justify-end items-center h-full w-10 sm:w-14 md:w-16">
+              <div key={s.name} className="flex flex-col justify-end items-center h-full w-16">
                 {/* Vertical Bar */}
                 <div
                   className="w-full rounded-t-lg bg-gradient-to-t from-emerald-600 to-emerald-400 relative overflow-hidden flex flex-col justify-between group transition-all duration-500 hover:brightness-110 shadow-[0_0_15px_rgba(16,185,129,0.15)] hover:shadow-[0_0_25px_rgba(16,185,129,0.35)]"
@@ -76,14 +99,14 @@ export default function StrengthsSection() {
 
                   {/* Rotated text label inside bar */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-sans text-[8px] sm:text-[10px] md:text-xs font-black tracking-widest text-zinc-950 uppercase -rotate-90 origin-center whitespace-nowrap select-none">
+                    <span className="font-sans text-xs font-black tracking-widest text-zinc-950 uppercase -rotate-90 origin-center whitespace-nowrap select-none">
                       {s.name}
                     </span>
                   </div>
                 </div>
 
                 {/* Percentage base label */}
-                <div className="w-full bg-badge-bg border border-t-0 border-zinc-800 py-1.5 text-center font-mono text-[9px] sm:text-[10px] md:text-xs font-bold text-white rounded-b-md shadow-inner">
+                <div className="w-full bg-badge-bg border border-t-0 border-zinc-800 py-1.5 text-center font-mono text-xs font-bold text-white rounded-b-md shadow-inner">
                   {s.val}%
                 </div>
               </div>
