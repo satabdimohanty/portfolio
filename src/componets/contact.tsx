@@ -183,7 +183,7 @@ export default function ContactSection() {
         onMouseLeave={handleMouseLeave}
         className="animating-gradient-border-wrapper mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl md:rounded-3xl shadow-[0_16px_48px_rgba(0,0,0,0.65),0_0_25px_rgba(16,185,129,0.08)]"
       >
-        <div className="animating-gradient-border-inner rounded-[inherit] px-5 py-8 md:py-10 lg:px-8">
+        <div className="animating-gradient-border-inner rounded-[inherit] px-5 pt-8 pb-12 md:pt-10 md:pb-14 lg:px-8">
           {/* Interactive Constellation Node Grid */}
           <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-10" />
 
