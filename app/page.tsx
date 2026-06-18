@@ -46,9 +46,7 @@ export default function Home() {
         <AIDevelopmentSection />
       </ScrollReveal>
 
-      <ScrollReveal direction="up">
-        <LanguagesSection />
-      </ScrollReveal>
+
 
       <ScrollReveal direction="up">
         <ProjectsSection />
@@ -61,7 +59,9 @@ export default function Home() {
       <ScrollReveal direction="up">
         <AchievementsSection />
       </ScrollReveal>
-
+      <ScrollReveal direction="up">
+        <LanguagesSection />
+      </ScrollReveal>
       <ScrollReveal direction="up">
         <ContactSection />
       </ScrollReveal>

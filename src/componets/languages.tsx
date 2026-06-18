@@ -70,11 +70,11 @@ export default function LanguagesSection() {
       <div className="relative z-10 mb-12">
         <div className="flex items-center gap-3">
           <span className="h-1.5 w-1.5 rounded-full bg-teal-300 shrink-0" />
-          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-zinc-500 font-bold">
+          <span className="font-sans text-[11px] tracking-[0.18em] text-[#8e9bb4] font-semibold uppercase">
             Interpersonal Skills
           </span>
         </div>
-        <h3 className="font-syne text-3xl font-extrabold uppercase leading-none tracking-tight md:text-4xl mt-3">
+        <h3 className="font-syne text-3xl font-extrabold uppercase leading-none tracking-tight md:text-4xl mt-2">
           <span className="block text-white">Languages &</span>
           <span className="block text-outline-orange mt-1">Communication</span>
         </h3>

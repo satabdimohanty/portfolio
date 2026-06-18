@@ -92,7 +92,7 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`cursor-pointer rounded-full px-3 py-1 text-[11px] lg:text-xs font-mono font-medium tracking-wide transition-all duration-300 ${
+                  className={`cursor-pointer rounded-full px-3 py-1.5 text-xs lg:text-sm font-mono font-bold tracking-wide transition-all duration-300 ${
                     isActive
                       ? "text-white bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 border border-emerald-500/35 shadow-[0_0_12px_rgba(16,185,129,0.15)]"
                       : "text-zinc-400 hover:text-white hover:bg-zinc-900/40 border border-transparent"

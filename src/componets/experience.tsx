@@ -29,7 +29,7 @@ const EXPERIENCE: ExperienceItem[] = [
     status: "current",
     projects: [
       {
-        name: "Noteved Admin Portal",
+        name: "Client Admin Portal",
         stack: ["React.js", "Next.js", "Tailwind CSS", "REST API"],
         bullets: [
           "Developed a scalable and responsive admin dashboard using React.js and Next.js, ensuring smooth navigation and efficient data handling across modules.",
@@ -39,7 +39,7 @@ const EXPERIENCE: ExperienceItem[] = [
         ]
       },
       {
-        name: "Site Pages to PDF Converter",
+        name: "SharePoint Page to PDF Converter",
         stack: ["React.js", "SPFx", "REST API", "TypeScript"],
         bullets: [
           "Built a React application within SharePoint Framework to enable conversion of SharePoint Site Pages into downloadable PDF documents.",
@@ -135,7 +135,7 @@ function RoleBlock({ exp }: { exp: ExperienceItem }) {
         {/* Glow backdrop effect */}
         <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-emerald-500/10 to-violet-500/10 opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500" />
         
-        <div className="relative flex flex-col h-full rounded-2xl border border-zinc-800/80 bg-zinc-900/10 backdrop-blur-md p-6 md:p-8 shadow-xl transition-all duration-500 group-hover:border-emerald-500/20 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.05)]">
+        <div className="relative flex flex-col h-full rounded-2xl border border-zinc-800/80 bg-zinc-900/50 backdrop-blur-md p-6 md:p-8 shadow-xl transition-all duration-500 group-hover:border-emerald-500/20 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.05)]">
           {/* Card header */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-800/50 pb-4 mb-6">
             <div>
@@ -163,17 +163,12 @@ function RoleBlock({ exp }: { exp: ExperienceItem }) {
           <div className="flex flex-col gap-6">
             {exp.projects.map((proj, pIdx) => (
               <div key={pIdx} className="bg-zinc-950/40 border border-zinc-800/60 rounded-xl p-5 hover:border-emerald-500/10 transition-all duration-300">
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <h4 className="font-mono text-sm font-bold text-emerald-400 tracking-wide">
-                    › {proj.name}
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {proj.stack.map((tech) => (
-                      <span key={tech} className={`text-[9px] font-mono px-2 py-0.5 rounded border transition-all duration-300 hover:-translate-y-0.5 ${getTechStyle(tech)}`}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {proj.stack.map((tech) => (
+                    <span key={tech} className={`text-[9px] font-mono px-2 py-0.5 rounded border transition-all duration-300 hover:-translate-y-0.5 ${getTechStyle(tech)}`}>
+                      {tech}
+                    </span>
+                  ))}
                 </div>
                 <div className="flex flex-col gap-2.5 mt-4 border-l border-zinc-800/60 pl-4">
                   {proj.bullets.map((bullet, bIdx) => (

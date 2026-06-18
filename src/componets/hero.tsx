@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 
 const TYPED_TITLES = [
-  "next.js App Router specialist",
-  "React.js developer",
-  "TypeScript engineer",
-  "performance optimizer",
-  "UI architect",
+  "Next.js & React Specialist",
+  "Frontend Engineer",
+  "TypeScript Developer",
+  "UI Performance Optimizer",
+  "Clean Code Advocate",
 ];
 
 export default function HeroSection() {
@@ -98,12 +98,11 @@ export default function HeroSection() {
 
             {/* Bio */}
             <p className="text-sm text-slate-400 leading-[1.8] max-w-md mb-8">
-              <span className="text-slate-200 font-medium">Software Engineer</span> with{" "}
-              <span className="text-slate-200 font-medium">2.5+ years</span> building scalable,
-              SEO-friendly, and high-performance web apps using{" "}
-              <span className="text-slate-200 font-medium">Next.js, React, TypeScript</span> &{" "}
-              <span className="text-slate-200 font-medium">Tailwind CSS</span>. Skilled in
-              SSR, SSG, App Router, API integration & clean architecture.
+              A passionate <span className="text-slate-200 font-medium">Frontend Developer</span> with{" "}
+              <span className="text-slate-200 font-medium">2.5+ years</span> of experience building responsive,
+              SEO-friendly, and high-performance web applications. Focused on crafting premium user interfaces with{" "}
+              <span className="text-slate-200 font-medium">Next.js, React, and TypeScript</span>, optimizing core web vitals,
+              and translating complex design designs into clean, maintainable code.
             </p>
 
             {/* CTAs */}

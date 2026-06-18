@@ -253,12 +253,12 @@ export default function ContactSection() {
           </div>
 
           {/* Heading & Subtitle */}
-          <h3 className="font-syne text-3xl font-extrabold leading-none tracking-tight md:text-4xl uppercase">
+          <h3 className="font-syne text-3xl font-extrabold uppercase leading-none tracking-tight md:text-4xl mt-4">
             <span className="block text-white">It's time to talk!</span>
             <span className="block text-outline-orange mt-1.5">Contact me</span>
           </h3>
 
-          <p className="mt-2.5 text-zinc-400 max-w-md text-xs md:text-sm leading-relaxed">
+          <p className="mt-2 text-zinc-400 max-w-md text-sm md:text-base leading-relaxed">
             I'm always open to discussing frontend engineering opportunities, web layout designs, or project collaborations. Drop me a line!
           </p>
 

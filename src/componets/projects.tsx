@@ -29,7 +29,7 @@ const PROJECTS = [
   {
     id: 2,
     address: "02",
-    title: "Noteved Admin Portal",
+    title: "Client Admin Portal",
     description:
       "Developed a scalable and responsive admin dashboard using React.js and Next.js, ensuring smooth navigation and efficient data handling across modules. Built reusable and modular UI components with Tailwind CSS.",
     live: "request-walkthrough",
@@ -51,23 +51,23 @@ const PROJECTS = [
   {
     id: 3,
     address: "03",
-    title: "Site Pages to PDF Converter (SPFx)",
+    title: "Banking Management System",
     description:
-      "Built a React application within SharePoint Framework to enable conversion of SharePoint Site Pages into downloadable PDF documents with efficient state management and content rendering.",
-    live: "request-walkthrough",
-    code: "request-architecture",
-    isProprietary: true,
+      "Designed and developed a secure core banking web application. Features multi-account support, real-time transaction ledger, transfer validation, and interactive financial dashboard analytics.",
+    live: "request-demo",
+    code: "request-details",
+    isPrivate: true,
     metrics: [
-      { value: "SharePoint", label: "Environment" },
-      { value: "SPFx", label: "Framework" },
+      { value: "Next.js", label: "Framework" },
       { value: "React.js", label: "Library" },
+      { value: "Tailwind CSS", label: "Styling" },
     ],
-    signal: "pdf",
+    signal: "banking",
     accent: "#10b981", // emerald green
     bootLines: [
-      "$ capturing DOM snapshot...",
-      "$ injecting page breaks",
-      "$ export ready",
+      "$ initializing secure ledger connection...",
+      "$ session authenticated via JWT token",
+      "$ syncing transaction databases...",
     ],
   },
 ];
@@ -384,6 +384,73 @@ function PdfReadout({ accent }: { accent: string }) {
   );
 }
 
+function BankingReadout({ accent }: { accent: string }) {
+  const transactionTemplates = [
+    { desc: "Stripe Payout", amount: "+$1,250.00", type: "credit" },
+    { desc: "AWS Infrastructure", amount: "-$84.20", type: "debit" },
+    { desc: "GitHub Sponsorship", amount: "+$50.00", type: "credit" },
+    { desc: "Vercel Deployment", amount: "-$20.00", type: "debit" },
+    { desc: "Figma Professional", amount: "-$15.00", type: "debit" },
+    { desc: "Client Retainer", amount: "+$2,800.00", type: "credit" },
+    { desc: "Google Cloud APIs", amount: "-$42.10", type: "debit" },
+  ];
+
+  const [txs, setTxs] = useState([
+    { desc: "Client Retainer", amount: "+$2,800.00", type: "credit", id: 1 },
+    { desc: "AWS Infrastructure", amount: "-$84.20", type: "debit", id: 2 },
+    { desc: "GitHub Sponsorship", amount: "+$50.00", type: "credit", id: 3 },
+  ]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTxs((prev) => {
+        const nextId = Math.max(...prev.map((t) => t.id)) + 1;
+        const template = transactionTemplates[Math.floor(Math.random() * transactionTemplates.length)];
+        const newTx = { ...template, id: nextId };
+        return [newTx, prev[0], prev[1]];
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative z-10 flex h-full flex-col justify-center gap-2 px-6 sm:px-8">
+      <div className="flex items-center justify-between">
+        <div>
+          <div className="font-mono text-[9px] text-zinc-500 uppercase">Vault Balance</div>
+          <div className="font-mono text-lg font-bold text-white tracking-tight mt-0.5">$18,452.12</div>
+        </div>
+        <div className="text-right">
+          <div className="font-mono text-[9px] text-zinc-500 uppercase">Ledger Status</div>
+          <div className="font-mono text-[10px] font-semibold text-emerald-400 mt-0.5 animate-pulse">● SECURED</div>
+        </div>
+      </div>
+
+      <div className="font-mono text-[9px] text-zinc-500 uppercase border-b border-zinc-800/60 pb-1">Real-time Activity</div>
+      
+      <div className="flex flex-col gap-1.5 overflow-hidden h-[120px]">
+        {txs.map((tx) => (
+          <div
+            key={tx.id}
+            className="flex items-center justify-between rounded-lg border border-zinc-900 bg-zinc-950/60 p-2 font-mono text-[11px] transition-all duration-500 transform translate-y-0 opacity-100"
+            style={{ borderColor: `${accent}15` }}
+          >
+            <div className="flex items-center gap-2">
+              <span className={`text-[10px] ${tx.type === "credit" ? "text-emerald-400" : "text-rose-400"}`}>
+                {tx.type === "credit" ? "↓" : "↑"}
+              </span>
+              <span className="text-zinc-300 truncate max-w-[120px]">{tx.desc}</span>
+            </div>
+            <span className={`font-semibold ${tx.type === "credit" ? "text-emerald-400" : "text-rose-400"}`}>
+              {tx.amount}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ReadoutBody({
   type,
   accent,
@@ -396,6 +463,9 @@ function ReadoutBody({
   }
   if (type === "dashboard") {
     return <DashboardReadout accent={accent} />;
+  }
+  if (type === "banking") {
+    return <BankingReadout accent={accent} />;
   }
   return <PdfReadout accent={accent} />;
 }
@@ -511,7 +581,7 @@ export default function ProjectsSection() {
                 <span className="font-sans text-[9px] uppercase tracking-widest text-brand-accent-light font-semibold">
                   Project {project.address}
                 </span>
-                <h4 className="font-serif text-3xl font-semibold italic text-white md:text-4xl">
+                <h4 className="font-serif text-2xl font-semibold italic text-white md:text-3xl">
                   {project.title}
                 </h4>
               </div>

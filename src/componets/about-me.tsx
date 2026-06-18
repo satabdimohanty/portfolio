@@ -1,53 +1,43 @@
 // about-me.tsx
 
-const SKILL_CATEGORIES = ["Frontend", "Backend", "DevOps", "Databases", "Cloud", "Other"];
+const SKILL_CATEGORIES = ["Languages", "Frameworks", "AI_Assisted", "Tools"];
 
 const TECH_STACK = {
-  Frontend: [
-    { name: "React.js", color: "#61DAFB" },
-    { name: "Next.js", color: "#FFFFFF" },
-    { name: "TypeScript", color: "#3178C6" },
+  Languages: [
     { name: "JavaScript", color: "#F7DF1E" },
-    { name: "Tailwind CSS", color: "#38BDF8" },
+    { name: "TypeScript", color: "#3178C6" },
     { name: "HTML5 & CSS3", color: "#E34F26" },
-    { name: "Sass / SCSS", color: "#CC6699" },
-    { name: "Redux Toolkit", color: "#764ABC" }
+    { name: "C#", color: "#178600" },
+    { name: "SQL", color: "#00758F" }
   ],
-  Backend: [
+  Frameworks: [
+    { name: "Next.js", color: "#FFFFFF" },
+    { name: "React.js", color: "#61DAFB" },
     { name: "Node.js", color: "#339933" },
-    { name: "Express.js", color: "#8E8E8E" },
-    { name: "REST APIs", color: "#009688" }
+    { name: "Redux Toolkit", color: "#764ABC" },
+    { name: "Tailwind CSS", color: "#38BDF8" }
   ],
-  DevOps: [
-    { name: "Docker", color: "#2496ED" },
-    { name: "Git & GitHub", color: "#F05032" },
-    { name: "Vercel Hosting", color: "#FFFFFF" },
-    { name: "Firebase", color: "#FFCA28" }
-  ],
-  Databases: [
-    { name: "MongoDB", color: "#47A248" },
-    { name: "PostgreSQL", color: "#4169E1" },
-    { name: "MySQL", color: "#4479A1" },
-    { name: "Prisma ORM", color: "#2D3748" }
-  ],
-  Cloud: [
-    { name: "SharePoint", color: "#0078D4" },
-    { name: "SPFx Development", color: "#0078D4" }
-  ],
-  Other: [
-    { name: "Figma UI/UX", color: "#F24E1E" },
+  AI_Assisted: [
+    { name: "GitHub Copilot", color: "#FFFFFF" },
     { name: "Cursor AI", color: "#38BDF8" },
-    { name: "ESLint Linting", color: "#4B32C3" }
+    { name: "Claude AI", color: "#D97706" },
+    { name: "ChatGPT", color: "#10B981" }
+  ],
+  Tools: [
+    { name: "Git & GitHub", color: "#F05032" },
+    { name: "VS Code", color: "#007ACC" },
+    { name: "Visual Studio", color: "#5C2D91" },
+    { name: "Postman", color: "#FF6C37" },
+    { name: "Jira", color: "#0052CC" },
+    { name: "Antigravity", color: "#10B981" }
   ]
 };
 
 const CATEGORY_DESCRIPTIONS = {
-  Frontend: "Building high-performance, responsive user interfaces and visual design systems from scratch using Figma, then translating them into modular React/Next.js components with clean Tailwind CSS styling.",
-  Backend: "Designing secure REST APIs, structuring database schemas, managing server states, and optimizing Node.js backend execution loops for maximum throughput and low latencies.",
-  DevOps: "Configuring containerized environments, setting up version control workflows on GitHub, managing cloud deployments, and automating Vercel/Firebase hosting pipelines.",
-  Databases: "Structuring relational and non-relational storage layers, building high-efficiency queries on MongoDB, PostgreSQL, and MySQL, and integrating Prisma ORM schemas.",
-  Cloud: "Developing custom SPFx extensions and portals for Microsoft SharePoint, integrating secure enterprise cloud services and automating office automation tasks.",
-  Other: "Creating interactive visual prototypes on Figma, enforcing strict ESLint rules, and leveraging AI developer tools like Cursor for expedited paired programming."
+  Languages: "Core development scripting languages, styling specifications, object-oriented backends, and relational database query syntaxes.",
+  Frameworks: "Modern frontend frameworks, component-driven client-side libraries, Javascript runtimes, global state managers, and utility styling sheets.",
+  AI_Assisted: "Paired coding models, interactive terminal assistants, logic design checkers, and code-indexing developer environments.",
+  Tools: "Version control systems, compiler environments, API sandbox utilities, project tracking portals, and AI agent platforms."
 };
 
 // Dossier facts configured directly below
@@ -379,7 +369,7 @@ export default function AboutSection() {
               </div>
 
               <p className="text-zinc-100 text-[13px] sm:text-sm leading-relaxed">
-                I'm <strong className="text-white font-semibold">Satabdi Mohanty</strong>, a <strong className="text-white font-semibold">frontend engineer and designer</strong> with over <strong className="text-emerald-200 font-semibold">2.5 years of experience</strong> in web application development. I'm passionate about building clean, performant, and responsive interfaces with strict attention to pixel-perfection. Currently, I am a Software Associate at <strong className="text-white font-semibold">Softree Technology</strong>, focusing on modern web development stacks like <strong className="text-white font-semibold">React, Next.js, and TypeScript</strong>. Research and consistent user flow design are at the core of my development philosophy.
+                I'm <strong className="text-white font-semibold">Satabdi Mohanty</strong>, a <strong className="text-white font-semibold">Frontend Developer</strong> with over <strong className="text-emerald-200 font-semibold">2.5 years of experience</strong> in web application development. I'm passionate about building clean, performant, and responsive interfaces with strict attention to pixel-perfection. Currently, I am a Software Associate at <strong className="text-white font-semibold">Softree Technology</strong>, focusing on modern web development stacks like <strong className="text-white font-semibold">React, Next.js, and TypeScript</strong>. Writing clean, maintainable logic and optimized user-centric flows are at the core of my development philosophy.
               </p>
               
               {/* Social Links Row */}
@@ -448,10 +438,10 @@ export default function AboutSection() {
         <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_2fr]">
           <div className="text-xl text-white">
             <div className="font-sans font-semibold">I build things for the people</div>
-            <div className="font-serif font-normal italic text-zinc-400 text-2xl mt-1.5">I can Design, Develop, Deploy</div>
+            <div className="font-serif font-normal italic text-zinc-400 text-2xl mt-1.5">Develop, Optimize, Deploy</div>
           </div>
           <div className="text-zinc-400 text-sm md:text-base leading-relaxed">
-            My primary stack is Next.js with TypeScript and Tailwind CSS. I have experience designing full visual design systems from scratch using Figma, translating them into highly reusable and customized component structures. I aim to create unique, responsive layout modules that guarantee complete user engagement.
+            My primary stack is Next.js with React, TypeScript, and Tailwind CSS. I specialize in building highly responsive interfaces, optimizing rendering cycles, and translating designs into clean, modular codebases. I aim to build unique, performant web modules that guarantee complete user engagement.
           </div>
         </div>
 
@@ -473,13 +463,16 @@ export default function AboutSection() {
                       Category 0{idx + 1}
                     </span>
                     <span className="font-sans text-[10px] font-semibold text-brand-accent-light tracking-wider uppercase">
-                      {category === "Other" ? "Tools" : category}
+                      {category === "AI_Assisted" ? "AI Assisted" : category}
                     </span>
                   </div>
 
                   {/* Card Title & Description */}
                   <h4 className="text-white font-sans font-semibold text-base mb-2">
-                    {category === "Other" ? "Utility & AI Tools" : `${category} Development`}
+                    {category === "Languages" && "Programming Languages"}
+                    {category === "Frameworks" && "Frameworks & Runtimes"}
+                    {category === "AI_Assisted" && "AI-Assisted Development"}
+                    {category === "Tools" && "Development & Project Tools"}
                   </h4>
                   <p className="text-zinc-100 text-xs sm:text-[13px] leading-relaxed mb-6">
                     {description}

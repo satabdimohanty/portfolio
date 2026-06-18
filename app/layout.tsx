@@ -3,8 +3,43 @@ import "./globals.css";
 import SmoothScrollProvider from "../src/componets/smooth-scroll"
 
 export const metadata: Metadata = {
-  title: "Satabdi Mohanty - Developer & Designer | Portfolio",
-  description: "Developer & Designer with a passion for creating user-friendly solutions.",
+  title: "Satabdi Mohanty | Frontend Developer (React & Next.js)",
+  description: "Explore the portfolio of Satabdi Mohanty, a Frontend Developer specializing in React, Next.js, and crafting premium, high-performance web experiences.",
+  keywords: [
+    "Satabdi Mohanty",
+    "Satabdi Mohanty Portfolio",
+    "Frontend Developer",
+    "React Developer",
+    "Next.js Developer",
+    "React & Next.js Developer",
+    "Web Developer Portfolio"
+  ],
+  authors: [{ name: "Satabdi Mohanty" }],
+  creator: "Satabdi Mohanty",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://satabdi.dev", // Replace with your actual domain when deployed
+    title: "Satabdi Mohanty | Frontend Developer (React & Next.js)",
+    description: "Explore the portfolio of Satabdi Mohanty, a Frontend Developer specializing in React, Next.js, and crafting premium, high-performance web experiences.",
+    siteName: "Satabdi Mohanty Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Satabdi Mohanty | Frontend Developer (React & Next.js)",
+    description: "Explore the portfolio of Satabdi Mohanty, a Frontend Developer specializing in React, Next.js, and crafting premium, high-performance web experiences.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

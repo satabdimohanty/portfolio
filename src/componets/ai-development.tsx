@@ -154,7 +154,7 @@ export default function AIDevelopmentSection() {
       </div>
 
       {/* ── Paired-Programming IDE Simulator Frame ── */}
-      <div className="w-full rounded-2xl border border-zinc-800 bg-[#05110c]/85 shadow-[0_15px_40px_rgba(2,24,18,0.5)] overflow-hidden flex flex-col md:grid md:grid-cols-[250px_1fr] h-[680px] md:h-[550px] lg:h-[520px]">
+      <div className="w-full rounded-2xl border border-zinc-800 bg-[#05110c]/85 shadow-[0_15px_40px_rgba(2,24,18,0.5)] overflow-hidden flex flex-col md:grid md:grid-cols-[250px_1fr] h-[700px] md:h-[580px] lg:h-[545px]">
         
         {/* Left Side: Sidebar File Explorer */}
         <div className="border-b md:border-b-0 md:border-r border-zinc-800 bg-[#030d09]/95 p-4 flex flex-col justify-between select-none">
@@ -247,7 +247,7 @@ export default function AIDevelopmentSection() {
             )}
 
          {/* Left Pane: Code Simulator */}
-<div className="flex-[6] p-5 border-b lg:border-b-0 lg:border-r border-zinc-800/80 overflow-y-auto font-mono text-xs text-zinc-300 leading-relaxed scrollbar-none">
+<div className="flex-[6] p-5 pb-12 border-b lg:border-b-0 lg:border-r border-zinc-800/80 overflow-y-auto font-mono text-xs text-zinc-300 leading-relaxed scrollbar-none">
   <div className="animate-[fadeInUp_0.3s_ease_forwards]">
 
     {activeTab === "copilot" && (
@@ -439,7 +439,7 @@ export default function AIDevelopmentSection() {
 </div>
 
           {/* Right Pane: Clear Portfolio Info Inspector */}
-          <div className="flex-[4] p-5 bg-[#030e0a]/45 overflow-y-auto flex flex-col justify-between scrollbar-none animate-[fadeInUp_0.4s_ease_forwards] border-t lg:border-t-0 border-zinc-800">
+          <div className="flex-[4] p-5 pb-12 bg-[#030e0a]/45 overflow-y-auto flex flex-col justify-between scrollbar-none animate-[fadeInUp_0.4s_ease_forwards] border-t lg:border-t-0 border-zinc-800">
             <div className="space-y-5">
               {/* Header */}
               <div>
