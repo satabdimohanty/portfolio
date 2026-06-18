@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className="h-full antialiased" style={{ colorScheme: "dark" }}>
       <body className="min-h-full bg-neutral-950 text-zinc-300 font-sans">
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>

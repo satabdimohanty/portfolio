@@ -241,7 +241,9 @@ function SignalTrace({ accent, seed }: { accent: string; seed: number }) {
     observer.observe(canvas);
 
     const ro = new ResizeObserver(resize);
-    ro.observe(canvas);
+    if (canvas.parentElement) {
+      ro.observe(canvas.parentElement);
+    }
 
     return () => {
       cancelAnimationFrame(raf);

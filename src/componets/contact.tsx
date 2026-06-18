@@ -19,139 +19,6 @@ export default function ContactSection() {
     setTimeout(() => setCopiedPhone(false), 2000);
   };
 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
-
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let rafId: number;
-    let width = canvas.width;
-    let height = canvas.height;
-
-    const resize = () => {
-      if (!canvas) return;
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      ctx.scale(dpr, dpr);
-      width = rect.width;
-      height = rect.height;
-    };
-    resize();
-
-    const resizeObserver = new ResizeObserver(() => {
-      resize();
-    });
-    resizeObserver.observe(canvas);
-
-    // Constellation Grid Nodes
-    const nodeCount = 45;
-    const nodes = Array.from({ length: nodeCount }).map(() => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25,
-      radius: Math.random() * 2 + 1,
-    }));
-
-    const draw = () => {
-      if (!canvas || !ctx) return;
-      ctx.clearRect(0, 0, width, height);
-
-      const mouse = gridRef.current
-        ? {
-            x: parseFloat(gridRef.current.style.getPropertyValue("--mx-raw") || "-1000"),
-            y: parseFloat(gridRef.current.style.getPropertyValue("--my-raw") || "-1000"),
-          }
-        : { x: -1000, y: -1000 };
-
-      // Update and draw nodes
-      nodes.forEach((node, i) => {
-        node.x += node.vx;
-        node.y += node.vy;
-
-        // Bounce on boundaries
-        if (node.x < 0 || node.x > width) node.vx *= -1;
-        if (node.y < 0 || node.y > height) node.vy *= -1;
-
-        // Magnet attraction
-        if (mouse.x > -500 && mouse.y > -500) {
-          const dx = mouse.x - node.x;
-          const dy = mouse.y - node.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 200) {
-            const force = (200 - dist) / 200;
-            node.vx += (dx / dist) * force * 0.015;
-            node.vy += (dy / dist) * force * 0.015;
-          }
-        }
-
-        // Damp velocity
-        const speed = Math.sqrt(node.vx * node.vx + node.vy * node.vy);
-        if (speed > 0.6) {
-          node.vx = (node.vx / speed) * 0.6;
-          node.vy = (node.vy / speed) * 0.6;
-        }
-
-        // Node dot
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(16, 185, 129, 0.4)";
-        ctx.fill();
-
-        // Connect nodes
-        for (let j = i + 1; j < nodes.length; j++) {
-          const next = nodes[j];
-          const dx = node.x - next.x;
-          const dy = node.y - next.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 110) {
-            const alpha = ((110 - dist) / 110) * 0.12;
-            ctx.beginPath();
-            ctx.moveTo(node.x, node.y);
-            ctx.lineTo(next.x, next.y);
-            ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-
-        // Mouse lightning links
-        if (mouse.x > -500 && mouse.y > -500) {
-          const dx = node.x - mouse.x;
-          const dy = node.y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 160) {
-            const alpha = ((160 - dist) / 160) * 0.22;
-            ctx.beginPath();
-            ctx.moveTo(node.x, node.y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(167, 139, 250, ${alpha})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-      });
-
-      rafId = requestAnimationFrame(draw);
-    };
-
-    draw();
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      resizeObserver.disconnect();
-    };
-  }, []);
-
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = gridRef.current;
     if (!el) return;
@@ -162,16 +29,6 @@ export default function ContactSection() {
     const yp = (y / rect.height) * 100;
     el.style.setProperty("--mx", `${xp}%`);
     el.style.setProperty("--my", `${yp}%`);
-    el.style.setProperty("--mx-raw", `${x}`);
-    el.style.setProperty("--my-raw", `${y}`);
-  };
-
-  const handleMouseLeave = () => {
-    const el = gridRef.current;
-    if (el) {
-      el.style.setProperty("--mx-raw", "-1000");
-      el.style.setProperty("--my-raw", "-1000");
-    }
   };
 
   return (
@@ -180,13 +37,9 @@ export default function ContactSection() {
         id="contact"
         ref={gridRef}
         onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        className="animating-gradient-border-wrapper mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl md:rounded-3xl shadow-[0_16px_48px_rgba(0,0,0,0.65),0_0_25px_rgba(16,185,129,0.08)]"
+        className="animating-gradient-border-wrapper bg-neutral-950 mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl md:rounded-3xl shadow-[0_16px_48px_rgba(0,0,0,0.65),0_0_25px_rgba(16,185,129,0.08)]"
       >
-        <div className="animating-gradient-border-inner rounded-[inherit] px-5 pt-8 pb-12 md:pt-10 md:pb-14 lg:px-8">
-          {/* Interactive Constellation Node Grid */}
-          <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-10" />
-
+        <div className="animating-gradient-border-inner bg-zinc-950 rounded-[inherit] px-5 pt-8 pb-12 md:pt-10 md:pb-14 lg:px-8">
           {/* Breathing ambient glow bg */}
           <div className="animating-ambient-glow -z-10" />
 
