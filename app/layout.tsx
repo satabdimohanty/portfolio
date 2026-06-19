@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://satabdi.dev", // Replace with your actual domain when deployed
+    url: "https://satabdi-dev.netlify.app", // Updated to Netlify URL
     title: "Satabdi Mohanty | Frontend Developer (React & Next.js)",
     description: "Explore the portfolio of Satabdi Mohanty, a Frontend Developer specializing in React, Next.js, and crafting premium, high-performance web experiences.",
     siteName: "Satabdi Mohanty Portfolio",
@@ -39,6 +39,9 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "google72af25a3baba3a4b",
   },
 };
 
